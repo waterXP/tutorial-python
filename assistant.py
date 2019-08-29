@@ -14,9 +14,13 @@ def sendToDingtalk (message):
 
 def getIp ():
   # get public ip(may be I will use my server later)
-  req = requests.get('http://aki.waterxp.site/ip')
-  ip = req.text if req.ok else 'Warning! It lost.'
-  return ip
+  r = ''
+  try:
+    req = requests.get('http://aki.waterxp.site/ip')
+    r = req.text if req.ok else 'Warning! It lost.'
+  except:
+    r = 'Warning! Server did not respond.'
+  return r
 
 def schedule (hour):
   # execute when run
