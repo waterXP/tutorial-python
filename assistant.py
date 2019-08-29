@@ -35,7 +35,7 @@ def sendIp ():
     gn, gn, gn, gn, gn, gm, gm, gm, gm, gm, gm, ga,
     ga, ga, ga, ga, ga, ge, ge, ge, ge, ge, ge, gn
   ]
-  sendToDingtalk(tmlist[time.localtime().tm_hour] + 'Boss. Our ip is: ' + getIp())
+  sendToDingtalk(tmlist[time.localtime().tm_hour] + 'Boss. Our ip is: ' + getIp() + '.')
 
 def getNextTime (hour, immediately = False):
   targetTime = hour * 3600
