@@ -19,13 +19,12 @@ def getIp ():
   return ip[0] if ip else "Warning! It lost."
 
 def schedule (hour):
+  # execute when run
   sendIp()
-  targetHour = time.localtime().tm_hour
-  seconds = (24 + hour - targetHour if targetHour > hour else hour - targetHour) * 3600
-  time.sleep(seconds or 86400)
   while True:
+    # so next time
+    time.sleep(getNextTime(hour))
     sendIp()
-    time.sleep(86400)
 
 def sendIp ():
   gm = 'Good morning! '
@@ -37,6 +36,15 @@ def sendIp ():
     ga, ga, ga, ga, ga, ge, ge, ge, ge, ge, ge, gn
   ]
   sendToDingtalk(tmlist[time.localtime().tm_hour] + 'Boss. Our ip is: ' + getIp())
+
+def getNextTime (hour, immediately = False):
+  targetTime = hour * 3600
+  a = time.localtime()
+  currentTime = a.tm_hour * 3600 + a.tm_min * 60 + a.tm_sec
+  seconds = 86400 + targetTime - currentTime if currentTime > targetTime else targetTime - currentTime
+  if (not immediately and seconds == 0):
+    seconds = 86400
+  return seconds
 
 def main ():
   schedule(8)
