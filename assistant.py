@@ -3,11 +3,11 @@
 
 # my assistant
 import requests, re, time
-robot = '7138bae6526b0adc5e5730e9678d0ae8a9a23697b32129f94c262f8cbabb360a'
+robotId = '7138bae6526b0adc5e5730e9678d0ae8a9a23697b32129f94c262f8cbabb360a'
 
 def sendToDingtalk (message):
   requests.post(
-    url = 'https://oapi.dingtalk.com/robot/send?access_token=' + robot,
+    url = 'https://oapi.dingtalk.com/robot/send?access_token=' + robotId,
     json = ({ 'msgtype': 'text', 'text': { 'content': message }}),
     headers = { 'Content-Type': 'application/json' }
   )
