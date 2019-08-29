@@ -17,7 +17,7 @@ def getIp ():
   r = ''
   try:
     req = requests.get('http://aki.waterxp.site/ip')
-    r = req.text if req.ok else 'Warning! It lost.'
+    r = req.text if req.ok else 'Warning! Request error.'
   except:
     r = 'Warning! Server did not respond.'
   return r
